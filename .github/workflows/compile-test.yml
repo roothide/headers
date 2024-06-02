@@ -17,18 +17,18 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: theos/sdks
-          ref: bb425abf3acae8eac328b828628b82df544d2774 # pinned, should be updated as appropriate
-          sparse-checkout: iPhoneOS14.5.sdk
+          ref: master #bb425abf3acae8eac328b828628b82df544d2774 # pinned, should be updated as appropriate
+          sparse-checkout: iPhoneOS15.6.sdk
           path: sdks
 
-      - name: Checkout theos/lib
+      - name: Checkout roothide/lib
         uses: actions/checkout@v4
         with:
-          repository: theos/lib
+          repository: roothide/lib
           ref: master # always check out latest
           path: lib
 
-      - name: Checkout theos/headers
+      - name: Checkout roothide/headers
         uses: actions/checkout@v4
         with:
           path: headers
@@ -68,8 +68,8 @@ jobs:
             {
               echo "#import <${HEADER}>"
               echo "int main() {}"
-            } | clang -I "${HEADER_DIR}" -F "lib" -isysroot sdks/iPhoneOS14.5.sdk \
-              -target arm64-apple-ios14.5 -arch arm64 \
+            } | clang -I "${HEADER_DIR}" -F "lib" -isysroot sdks/iPhoneOS15.6.sdk \
+              -target arm64-apple-ios15.6 -arch arm64 \
               -x "${{ matrix.language }}" ${{ matrix.cflags }} \
               ${ADDITIONAL_FLAGS} -fsyntax-only -
           done
