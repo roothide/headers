@@ -21,14 +21,14 @@ jobs:
           sparse-checkout: iPhoneOS14.5.sdk
           path: sdks
 
-      - name: Checkout theos/lib
+      - name: Checkout roothide/lib
         uses: actions/checkout@v4
         with:
-          repository: theos/lib
+          repository: roothide/lib
           ref: master # always check out latest
           path: lib
 
-      - name: Checkout theos/headers
+      - name: Checkout roothide/headers
         uses: actions/checkout@v4
         with:
           path: headers
