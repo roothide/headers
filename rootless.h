@@ -1,3 +1,7 @@
+#ifdef THEOS_PACKAGE_SCHEME_ROOTHIDE
+#include <rootless-compat.h>
+#else
+
 #include <TargetConditionals.h>
 
 #if TARGET_OS_IPHONE && !TARGET_OS_SIMULATOR
@@ -31,5 +35,7 @@ _Pragma("message(\"'XINA_SUPPORT' is deprecated. libroot will now handle this fo
     strlcat(outPath, path, PATH_MAX); \
     outPath; \
 }) : path
+
+#endif
 
 #endif
