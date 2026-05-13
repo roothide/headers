@@ -1,7 +1,9 @@
+#ifndef DISABLE_ROOTLESS_COMPAT_WARNING
 #pragma GCC diagnostic	push
 #pragma GCC diagnostic	warning "-Wpragmas"
 #pragma GCC warning		"You're building roothide package with leagy rootless.h, upgrade to the roothide APIs for full compatibility with rootful/rootless/roothide : https://github.com/roothide/Developer"
 #pragma GCC diagnostic	pop
+#endif
 
 #define __DO_PRAGMA(x)				_Pragma(#x)
 #define __UNSUPPORTED_MACRO			__DO_PRAGMA(GCC error "Please upgrade to the roothide APIs for full compatibility with rootful/rootless/roothide : https://github.com/roothide/Developer")
